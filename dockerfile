@@ -1,14 +1,13 @@
-FROM node:18
+FROM node:18-alpine
 WORKDIR /app
 
-# Copier uniquement les fichiers nécessaires à l'installation
 COPY package*.json ./
-RUN npm install
+RUN npm ci --omit=dev
 
-# Copier le reste du code après
 COPY . .
 
 EXPOSE 3000
-ENV NODE_ENV=development
+ENV NODE_ENV=production
 RUN npm run build
+USER node
 CMD ["node", "server.js"]
