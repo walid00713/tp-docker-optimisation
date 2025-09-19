@@ -1,4 +1,4 @@
-# Étape 1 : Build (si jamais tu as besoin de devDependencies ou de transpilation)
+# Étape 1 : Build 
 FROM node:18-alpine AS build
 WORKDIR /app
 COPY package*.json ./
